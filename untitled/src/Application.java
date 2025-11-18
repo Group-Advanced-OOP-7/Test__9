@@ -55,7 +55,50 @@ public class Application {
 
             frame.add(mainPanel);
             frame.setVisible(true);
+            // Create Account logic
+            btnCreate.addActionListener(e -> {
+                String fullName = txtFullName.getText();
+                String email = txtEmail.getText();
+                String phone = txtPhone.getText();
+                String username = txtUsername.getText();
+                String password = new String(txtPassword.getPassword());
+                String confirm = new String(txtConfirm.getPassword());
 
+                if (fullName.isEmpty() || email.isEmpty() || phone.isEmpty() ||
+                        username.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(frame, "Please fill all fields!");
+                    return;
+                }
+                if (!password.equals(confirm)) {
+                    JOptionPane.showMessageDialog(frame, "Passwords do not match!");
+                    return;
+                }
+
+                if (registerUser(fullName, email, phone, username, password)) {
+                    JOptionPane.showMessageDialog(frame, "Account created successfully!");
+                    frame.dispose();
+                    showLoginForm();
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Username already exists or error
+                            saving data.");
+                }
+            });
+
+            btnBack.addActionListener(e -> {
+                frame.dispose();
+                showLoginForm();
+            });
+        }
+
+     
+        private void showDashboard(String username) {
+            frame = new JFrame("Dashboard");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(400, 300);
+            frame.setLocationRelativeTo(null);
+
+            JLabel lblWelcome = new JLabel("Welcome, " + username + "!", SwingConstants.CENTER);
+            lblWelcome.setFont(new Font("Segoe UI", Font.BOLD, 18));
 
         }
 }
