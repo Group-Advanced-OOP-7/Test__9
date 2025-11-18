@@ -90,7 +90,7 @@ public class Application {
             });
         }
 
-     
+
         private void showDashboard(String username) {
             frame = new JFrame("Dashboard");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,6 +99,23 @@ public class Application {
 
             JLabel lblWelcome = new JLabel("Welcome, " + username + "!", SwingConstants.CENTER);
             lblWelcome.setFont(new Font("Segoe UI", Font.BOLD, 18));
+            JButton btnLogout = new JButton("Logout");
+            btnLogout.addActionListener(e -> {
+                frame.dispose();
+                showLoginForm();
+            });
+
+            frame.setLayout(new BorderLayout());
+            frame.add(lblWelcome, BorderLayout.CENTER);
+            frame.add(btnLogout, BorderLayout.SOUTH);
+
+            frame.setVisible(true);
+        }
+
+      
+        private boolean registerUser(String fullName, String email, String phone,
+                String username, String password) {
+            String sql = "INSERT INTO users (fullname, email, phone, username, password) VALUES (?, ?, ?, ?, ?)";
 
         }
 }
