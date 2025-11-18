@@ -20,6 +20,21 @@ public class Application {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(400, 300);
             frame.setLocationRelativeTo(null);
+            mainPanel = new JPanel(new GridBagLayout());
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.insets = new Insets(8, 8, 8, 8);
 
-    }
+            JLabel lblTitle = new JLabel("User Login");
+            lblTitle.setFont(new Font("Segoe UI", Font.BOLD, 20));
+            gbc.gridx = 0; gbc.gridy = 0; gbc.gridwidth = 2;
+            mainPanel.add(lblTitle, gbc);
+
+            gbc.gridwidth = 1;
+            gbc.gridy++;
+            mainPanel.add(new JLabel("Username:"), gbc);
+            gbc.gridx = 1;
+            JTextField txtUsername = new JTextField(15);
+
+
+        }
 }
