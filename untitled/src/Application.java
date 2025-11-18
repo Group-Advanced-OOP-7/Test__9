@@ -116,6 +116,28 @@ public class Application {
         private boolean registerUser(String fullName, String email, String phone,
                 String username, String password) {
             String sql = "INSERT INTO users (fullname, email, phone, username, password) VALUES (?, ?, ?, ?, ?)";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
+    private boolean loginUser(String username, String password) {
+        String sql = "SELECT * FROM users WHERE username=? AND password=?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next(); // true if match found
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(Application::new);}
+}
         }
 }
