@@ -34,6 +34,27 @@ public class Application {
             mainPanel.add(new JLabel("Username:"), gbc);
             gbc.gridx = 1;
             JTextField txtUsername = new JTextField(15);
+            mainPanel.add(txtUsername, gbc);
+
+            gbc.gridx = 0; gbc.gridy++;
+            mainPanel.add(new JLabel("Password:"), gbc);
+            gbc.gridx = 1;
+            JPasswordField txtPassword = new JPasswordField(15);
+            mainPanel.add(txtPassword, gbc);
+
+            gbc.gridy++;
+            gbc.gridx = 0; gbc.gridwidth = 2;
+
+            JButton btnLogin = new JButton("Login");
+            JButton btnRegister = new JButton("Create Account");
+
+            JPanel btnPanel = new JPanel();
+            btnPanel.add(btnLogin);
+            btnPanel.add(btnRegister);
+            mainPanel.add(btnPanel, gbc);
+
+            frame.add(mainPanel);
+            frame.setVisible(true);
 
 
         }
