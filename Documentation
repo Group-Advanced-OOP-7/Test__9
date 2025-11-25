@@ -1,0 +1,14 @@
+Brench 2 commit 1
+  Prepare SQL INSERT statement for student record
+Bind name, regNo, year, and faculty parameters to PreparedStatement
+Execute INSERT query and show success message
+Add field clearing after successful save
+Handle NumberFormatException for invalid year input
+Catch SQLException and display database error message
+Close PreparedStatement and database connection
+
+  Brench2 commit2 
+  Add Swing input fields for name, registration number, and year
+Add faculty selection JComboBox component
+Add save and clear buttons to Application U
+Initialize main Application form components in constructor
